@@ -1,7 +1,7 @@
 ﻿
 ## Description:
 
-L'application "Densité d'antennes" est conçue pour calculer et afficher la densité et le nombre d'antennes mobiles pour différents opérateurs et générations d'antennes (2G, 3G, 4G, 5G) dans un rayon spécifié autour d'un point d'intérêt défini par ses coordonnées (latitude et longitude). L'application utilise l'API ANFR (Agence nationale des fréquences) pour récupérer les données des stations mobiles en France. L'orientation des antennes de ces stations mobiles est récupérée sur le site data.gouv.fr dans le jeu de données [sur les installations radioélectriques de plus de 5 watts](https://www.data.gouv.fr/fr/datasets/donnees-sur-les-installations-radioelectriques-de-plus-de-5-watts-1/#/resources)
+L'application "CellDataWizard" est conçue pour calculer et afficher la densité et le nombre d'antennes mobiles pour différents opérateurs et générations d'antennes (2G, 3G, 4G, 5G) dans un rayon spécifié autour d'un point d'intérêt défini par ses coordonnées (latitude et longitude). L'application utilise l'API ANFR (Agence nationale des fréquences) pour récupérer les données des stations mobiles en France. L'orientation des antennes de ces stations mobiles est récupérée sur le site data.gouv.fr dans le jeu de données [sur les installations radioélectriques de plus de 5 watts](https://www.data.gouv.fr/fr/datasets/donnees-sur-les-installations-radioelectriques-de-plus-de-5-watts-1/#/resources)
 
 L'application utilise un système de mise en cache local pour éviter de télécharger à nouveau les mêmes données d'antennes à chaque fois que le calcul est effectué si les données locales sont plus récentes que les données en ligne.
 
@@ -16,7 +16,7 @@ L'application préremplie les coordonnées géographiques en se basant sur l'IP.
 pip install numpy pandas requests geopy shapely tkinter
 ```
 
-3. Téléchargez et copiez les fichiers `densite_antennes.py`, `data_update.py` et `augmented_data.py` dans le même répertoire
+3. Téléchargez et copiez les fichiers `celldatawizard.py`, `data_update.py` et `augmented_data.py` dans le même répertoire
 
 4. Pour exécuter l'application, ouvrez un terminal, accédez au répertoire où se trouve le fichier `densite_antennes.py`, puis exécutez la commande suivante:
 ```
