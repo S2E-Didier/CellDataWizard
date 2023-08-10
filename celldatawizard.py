@@ -158,6 +158,7 @@ def get_antenna_azimuth(antenna_id, operator, generation):
         if record['fields']['id'] == antenna_id:
             azimuth = record['fields'].get('aer_nb_azimut', None)
             if azimuth is not None:
+                azimuth = azimuth.replace(',', '.')  # Remplace la virgule par un point
                 return float(azimuth)  # Convertit en float avant de renvoyer
     return None
 
