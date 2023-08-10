@@ -37,7 +37,7 @@ def get_anfr_data_last_modified_date():
 
     logging.info("Récupération de la date de dernière modification des données de l'ANFR.")
     
-    url = "https://data.anfr.fr/anfr/visualisation/information/?id=dd11fac6-4531-4a27-9c8c-a3a9e4ec2107&refine.adm_lb_nom=BOUYGUES+TELECOM&refine.adm_lb_nom=DIGICEL&refine.adm_lb_nom=FREE+CARAIBES&refine.adm_lb_nom=FREE+MOBILE&refine.adm_lb_nom=ORANGE&refine.adm_lb_nom=OUTREMER+TELECOM&refine.adm_lb_nom=SFR&refine.generation=5G&refine.generation=4G&refine.generation=3G&refine.generation=2G&refine.statut=En+service&refine.statut=Techniquement+op%C3%A9rationnel"
+    url = "https://data.anfr.fr/anfr/visualisation/information/?id=dd11fac6-4531-4a27-9c8c-a3a9e4ec2107&refine.adm_lb_nom=BOUYGUES+TELECOM&refine.adm_lb_nom=DIGICEL&refine.adm_lb_nom=FREE+CARAIBES&refine.adm_lb_nom=FREE+MOBILE&refine.adm_lb_nom=ORANGE&refine.adm_lb_nom=OUTREMER+TELECOM&refine.adm_lb_nom=SFR"
     
     try:
         logging.info("Envoi de la requête GET.")
@@ -64,7 +64,6 @@ def get_anfr_data_last_modified_date():
         return None
     finally:
         logging.info("Fin de la fonction get_anfr_data_last_modified_date.")
-
 
 # Fonction pour récupérer ou mettre à jour les données de l'antenne
 def retrieve_or_update_antenna_data(operator, generation, local_data_dir, anfr_last_modified_date):
