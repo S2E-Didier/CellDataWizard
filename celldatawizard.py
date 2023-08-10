@@ -377,6 +377,7 @@ if __name__ == "__main__":
         radius_label = tk.Label(root, text="Rayon (en kilomètres) :")
         radius_label.pack()
         radius_entry = tk.Entry(root)
+        radius_entry.insert (0, 1)   # Pré-remplir avec 1
         radius_entry.pack()
 
         operator_listbox = tk.Listbox(root, selectmode=tk.MULTIPLE)
