@@ -269,7 +269,7 @@ def create_map(densities, lat, lon, radius):
 
     # Ajoute un marqueur pour le point d'intérêt
     folium.Marker(
-        location=[poi_lat, poi_lon],
+        location=[lat, lon],
     ).add_to(m)
 
     # Parcoure les antennes dans le dataframe
@@ -308,8 +308,8 @@ def compute_and_show_antenna_density(lat, lon, radius, operators):
         display_antenna_density_results(operators, generations, densities, antenna_counts, oriented_antennas)  # Ajoutez oriented_antennas ici
 
         # Après avoir calculé densities, antenna_counts, oriented_antennas
-        map_ = create_map(densities, lat, lon, radius)
-        map_.save("map.html")  # Sauvegarde la carte en HTML
+        #map_ = create_map(densities, lat, lon, radius)
+        #map_.save("map.html")  # Sauvegarde la carte en HTML
 
 
 worker_thread = None
