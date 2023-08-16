@@ -240,7 +240,7 @@ def is_local_file_up_to_date(online_date):
     if os.path.exists(CSV_FILENAME):
         # Récupération de la date de dernière modification du fichier local
         local_file_time = os.path.getmtime(CSV_FILENAME)
-        local_date = datetime.datetime.fromtimestamp(local_file_time)
+        local_date = datetime.fromtimestamp(local_file_time)
         # Si la date du fichier local est plus récente que la date en ligne
         if local_date > online_date:
             logging.info("La version locale de SUP_ANTENNE.csv est à jour.")
@@ -263,11 +263,11 @@ def is_json_outdated_compared_to_csv(filename, csv_filename):
     # Obtenir le timestamp du fichier
     file_time = os.path.getmtime(filename)
     # Convertir le timestamp en date
-    file_date = datetime.datetime.fromtimestamp(file_time)
+    file_date = datetime.fromtimestamp(file_time)
     # Obtenir le timestamp du fichier CSV
     csv_file_time = os.path.getmtime(csv_filename)
     # Convertir le timestamp du fichier CSV en date
-    csv_file_date = datetime.datetime.fromtimestamp(csv_file_time)
+    csv_file_date = datetime.fromtimestamp(csv_file_time)
     # Le fichier est obsolète si sa date est antérieure à celle du fichier CSV
     return file_date < csv_file_date
 
