@@ -24,14 +24,12 @@ from tkinter import ttk
 
 # Définition des constantes
 CSV_FILENAME = 'SUP_ANTENNE.csv'
-JSON_DIR = 'local_antenna_data'
-AUGMENTED_JSON_DIR = 'local_antenna_data_augmented'
+LOCAL_DATA_DIR = 'local_antenna_data'
+AUGMENTED_DATA_DIR = 'local_antenna_data_augmented'
 JSON_EXT = '.json'
 BASE_URL = 'https://www.data.gouv.fr/api/1/'
 PATH = 'datasets/551d4ff3c751df55da0cd89f'
 URL_LAST_MODIFIED = "https://data.anfr.fr/anfr/visualisation/information/?id=dd11fac6-4531-4a27-9c8c-a3a9e4ec2107&refine.statut=En+service&refine.statut=Techniquement+op%C3%A9rationnel"
-LOCAL_DATA_DIR = "local_antenna_data"
-AUGMENTED_DATA_DIR = 'local_antenna_data_augmented'
 URL_BASE = "https://data.anfr.fr/api/records/2.0/downloadfile/format=json&refine.statut=En+service&refine.statut=Techniquement+op%C3%A9rationnel&resource_id=88ef0887-6b0f-4d3f-8545-6d64c8f597da"
 
 
@@ -451,9 +449,9 @@ def merge_json_with_dataframe(filename: str, dict_df: defaultdict):
 # Fonction pour fusionner un fichier JSON avec un DataFrame et sauvegarder le résultat
 def merge_json_with_dataframe_and_save(filename, dict_df):
     # Nom complet du fichier JSON original
-    old_file = os.path.join(JSON_DIR, filename)
+    old_file = os.path.join(LOCAL_DATA_DIR, filename)
     # Nom complet du nouveau fichier JSON
-    new_file = os.path.join(AUGMENTED_JSON_DIR, filename)
+    new_file = os.path.join(AUGMENTED_DATA_DIR, filename)
 
     # Si le nouveau fichier JSON est obsolète par rapport au fichier CSV
     if is_json_outdated_compared_to_csv(new_file, CSV_FILENAME):
@@ -482,13 +480,13 @@ def process_json_files():
     logger.info("Traitement des fichiers JSON...")
 
     # Si le répertoire des fichiers JSON n'existe pas, log une erreur et retourne
-    if not os.path.exists(JSON_DIR):
-        logger.error(f"Erreur : le répertoire '{JSON_DIR}' n'existe pas.")
+    if not os.path.exists(LOCAL_DATA_DIR):
+        logger.error(f"Erreur : le répertoire '{LOCAL_DATA_DIR}' n'existe pas.")
         return
     # Liste des fichiers JSON dans le répertoire
-    json_files = [filename for filename in os.listdir(JSON_DIR) if filename.endswith(JSON_EXT)]
+    json_files = [filename for filename in os.listdir(LOCAL_DATA_DIR) if filename.endswith(JSON_EXT)]
     # Vérifie si les fichiers JSON sont obsolètes par rapport au fichier CSV
-    json_files_are_outdated = any([is_json_outdated_compared_to_csv(os.path.join(AUGMENTED_JSON_DIR, filename), CSV_FILENAME) for filename in json_files])
+    json_files_are_outdated = any([is_json_outdated_compared_to_csv(os.path.join(AUGMENTED_DATA_DIR, filename), CSV_FILENAME) for filename in json_files])
     # Si au moins un fichier JSON est obsolète
     if json_files_are_outdated:
         # Charge le DataFrame à partir du fichier CSV
